@@ -357,6 +357,18 @@
         display: none !important;
     }
     
+    /* iOS Safari scroll fixes */
+    body {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: none;
+        -webkit-overscroll-behavior: none;
+    }
+    
+    html {
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+    
     .navbar-collapse.show {
         background: rgba(0, 0, 0, 0.8) !important;
     }

@@ -1,6 +1,37 @@
 jQuery(document).ready(
   (function ($) {
     "use strict";
+    
+    // iOS Safari scroll fix - prevent automatic scroll to top
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    
+    if (isIOS) {
+      // Disable smooth scrolling behavior completely on iOS
+      $('html').css('scroll-behavior', 'auto');
+      
+      // Prevent any scroll events that might trigger unwanted behavior
+      var preventAutoScroll = false;
+      
+      $(window).on('scroll', function(e) {
+        if (preventAutoScroll) {
+          e.preventDefault();
+          return false;
+        }
+      });
+      
+      // Monitor when reaching bottom and prevent any auto-scroll
+      $(window).on('scroll', function() {
+        var scrollHeight = $(document).height();
+        var scrollPosition = $(window).height() + $(window).scrollTop();
+        
+        if (scrollPosition >= scrollHeight - 10) {
+          preventAutoScroll = true;
+          setTimeout(function() {
+            preventAutoScroll = false;
+          }, 500);
+        }
+      });
+    }
 
     /*--------------------------
         SCROLLSPY ACTIVE
