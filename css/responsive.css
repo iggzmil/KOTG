@@ -47,8 +47,8 @@
         box-shadow: 0 0 0 10px rgba(202, 61, 38, 0.5), 0 0 0 10px rgba(202, 61, 38, 0.2);
     }
     100% {
-        -webkit-box-shadow: 0 0 0 0px rgba(202, 61, 38, 04);
-        box-shadow: 0 0 0 0px rgba(202, 61, 38, 04);
+        -webkit-box-shadow: 0 0 0 0px rgba(202, 61, 38, 0.4);
+        box-shadow: 0 0 0 0px rgba(202, 61, 38, 0.4);
     }
 }
 
@@ -70,8 +70,8 @@
         box-shadow: 0 0 0 10px rgba(202, 61, 38, 0.5), 0 0 0 10px rgba(202, 61, 38, 0.2);
     }
     100% {
-        -webkit-box-shadow: 0 0 0 0px rgba(202, 61, 38, 04);
-        box-shadow: 0 0 0 0px rgba(202, 61, 38, 04);
+        -webkit-box-shadow: 0 0 0 0px rgba(202, 61, 38, 0.4);
+        box-shadow: 0 0 0 0px rgba(202, 61, 38, 0.4);
     }
 }
 

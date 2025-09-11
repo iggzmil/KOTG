@@ -33,17 +33,6 @@ jQuery(document).ready(
       });
     }
 
-    /*--------------------------
-        SCROLLSPY ACTIVE
-    ---------------------------*/
-    // Disabled ScrollSpy to fix mobile scroll issue
-    // var scrollSpyEl = document.querySelector('body');
-    // if (scrollSpyEl) {
-    //   new bootstrap.ScrollSpy(scrollSpyEl, {
-    //     target: '#navbarNav',
-    //     offset: 50
-    //   });
-    // }
 
     /*--------------------------
         STICKY MAINMENU
