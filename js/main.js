@@ -67,36 +67,36 @@ jQuery(document).ready(
       horizontalScrolling: false,
     });
 
-    /*------------------------------
-        VIDEO BLOG POPUP
-    --------------------------------*/
-    $(".blog-video-button").magnificPopup({
-      disableOn: 700,
-      type: "iframe",
-      mainClass: "mfp-fade",
-      removalDelay: 320,
-      preloader: false,
-    });
 
     /*---------------------------
         SMOOTH SCROLL
     -----------------------------*/
-    $("a.scrolltotop, .slider-area h3 a, .navbar-header a, ul#nav a").on(
-      "click",
-      function (event) {
-        var id = $(this).attr("href");
-        var offset = 40;
-        var target = $(id).offset().top - offset;
-        $("html, body").animate(
-          {
-            scrollTop: target,
-          },
-          1500,
-          "easeInOutExpo"
-        );
-        event.preventDefault();
+    $(document).on("click", "a[href^='#']", function (event) {
+      var href = $(this).attr("href");
+      
+      if (href && href.length > 1) {
+        var targetElement = $(href);
+        
+        if (targetElement.length > 0) {
+          event.preventDefault();
+          
+          // Special handling for scroll to top
+          if (href === "#home" && $(this).hasClass("scrolltotop")) {
+            $("html, body").animate({
+              scrollTop: 0
+            }, 1000, "swing");
+          } else {
+            // Regular section scrolling
+            var offset = 80;
+            var target = targetElement.offset().top - offset;
+            
+            $("html, body").animate({
+              scrollTop: target
+            }, 1000, "swing");
+          }
+        }
       }
-    );
+    });
 
     /*----------------------------
         SCROLL TO TOP
@@ -104,22 +104,19 @@ jQuery(document).ready(
     $(window).on("scroll", function () {
       var $totalHeight = $(window).scrollTop();
       var $scrollToTop = $(".scrolltotop");
+      
       if ($totalHeight > 300) {
         $scrollToTop.fadeIn();
       } else {
         $scrollToTop.fadeOut();
       }
-      if ($totalHeight + $(window).height() === $(document).height()) {
-        $scrollToTop.css("bottom", "90px");
-      } else {
-        $scrollToTop.css("bottom", "20px");
-      }
+      
+      // Keep button at consistent position
+      $scrollToTop.css("bottom", "20px");
+      $scrollToTop.css("right", "20px");
+      $scrollToTop.css("z-index", "100001");
     });
 
-    /*---------------------------
-        MENU LIST MIXITUP FILTERING
-    ----------------------------*/
-    $(".food-menu-list").mixItUp();
 
     /*---------------------------
         MENU DISCOUNT SLIDER
@@ -129,7 +126,7 @@ jQuery(document).ready(
       video: true,
       items: 1,
       smartSpeed: 1000,
-      loop: true,
+      loop: false,
       nav: false,
       navText: [
         '<i class="fas fa-angle-left"></i>',
@@ -152,140 +149,73 @@ jQuery(document).ready(
       },
     });
 
-    /*---------------------------
-        TEAM SLIDER
-    -----------------------------*/
-    $(".team-slider").owlCarousel({
-      merge: true,
-      video: true,
-      items: 1,
-      smartSpeed: 1000,
-      loop: true,
-      nav: false,
-      navText: [
-        '<i class="fas fa-angle-left"></i>',
-        '<i class="fas fa-angle-right"></i>',
-      ],
-      autoplay: false,
-      autoplayTimeout: 2000,
-      margin: 15,
-      responsiveClass: true,
-      responsive: {
-        0: {
-          items: 1,
-        },
-        600: {
-          items: 3,
-        },
-        1000: {
-          items: 4,
-        },
-        1200: {
-          items: 5,
-        },
-      },
-    });
 
-    /*---------------------------
-        BLOG POST SLIDER
-    -----------------------------*/
-    $(".post-slider").owlCarousel({
-      merge: true,
-      video: true,
-      items: 1,
-      smartSpeed: 2000,
-      loop: true,
-      nav: true,
-      navText: [
-        '<i class="fas fa-angle-left"></i>',
-        '<i class="fas fa-angle-right"></i>',
-      ],
-      autoplay: true,
-      autoplayTimeout: 3000,
-      margin: 15,
-      responsiveClass: true,
-      responsive: {
-        0: {
-          items: 1,
-        },
-        600: {
-          items: 1,
-        },
-        1000: {
-          items: 2,
-        },
-        1200: {
-          items: 3,
-        },
-      },
-    });
 
-    /*---------------------------
-        BLOG POST IMAGE SLIDER
-    -----------------------------*/
-    $(".blog-image-slide").owlCarousel({
-      merge: true,
-      video: true,
-      items: 1,
-      smartSpeed: 1000,
-      loop: true,
-      animateIn: "fadeIn",
-      animateOut: "fadeOut",
-      nav: true,
-      navText: [
-        '<i class="fas fa-angle-left"></i>',
-        '<i class="fas fa-angle-right"></i>',
-      ],
-      autoplay: false,
-      autoplayTimeout: 2000,
-      margin: 15,
-      responsiveClass: true,
-      responsive: {
-        0: {
-          items: 1,
-        },
-        600: {
-          items: 1,
-        },
-        1000: {
-          items: 1,
-        },
-      },
-    });
-
-    /*---------------------------
-        BMENU SLIDER
-    -----------------------------*/
-    $(".food-menu-list.food-menu-slider").owlCarousel({
-      smartSpeed: 1000,
-      loop: true,
-      nav: true,
-      navText: [
-        '<i class="fas fa-angle-left"></i>',
-        '<i class="fas fa-angle-right"></i>',
-      ],
-      autoplay: true,
-      autoplayTimeout: 3000,
-      margin: 30,
-      responsiveClass: true,
-      responsive: {
-        0: {
-          items: 1,
-        },
-        600: {
-          items: 2,
-        },
-        1000: {
-          items: 3,
-        },
-      },
-    });
 
 
     /*--------------------------
-        ACTIVE WOW JS
+        GALLERY MODAL FUNCTIONALITY
     ----------------------------*/
-    // new WOW().init();
+    var modal = document.getElementById("gallery-modal");
+    var modalImg = document.getElementById("gallery-modal-img");
+    var galleryThumbnails = document.querySelectorAll(".gallery-thumbnail");
+    var closeBtn = document.querySelector(".gallery-close");
+    var prevBtn = document.querySelector(".gallery-prev");
+    var nextBtn = document.querySelector(".gallery-next");
+    var currentImageIndex = 0;
+
+    // Add click event to each thumbnail
+    galleryThumbnails.forEach(function(thumbnail, index) {
+      thumbnail.addEventListener("click", function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        currentImageIndex = index;
+      });
+    });
+
+    // Close modal when clicking the X
+    closeBtn.addEventListener("click", function() {
+      modal.style.display = "none";
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener("click", function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    // Previous image
+    prevBtn.addEventListener("click", function() {
+      currentImageIndex = (currentImageIndex - 1 + galleryThumbnails.length) % galleryThumbnails.length;
+      modalImg.src = galleryThumbnails[currentImageIndex].src;
+    });
+
+    // Next image
+    nextBtn.addEventListener("click", function() {
+      currentImageIndex = (currentImageIndex + 1) % galleryThumbnails.length;
+      modalImg.src = galleryThumbnails[currentImageIndex].src;
+    });
+
+    // Keyboard navigation
+    document.addEventListener("keydown", function(event) {
+      if (modal.style.display === "block") {
+        switch(event.key) {
+          case "Escape":
+            modal.style.display = "none";
+            break;
+          case "ArrowLeft":
+            currentImageIndex = (currentImageIndex - 1 + galleryThumbnails.length) % galleryThumbnails.length;
+            modalImg.src = galleryThumbnails[currentImageIndex].src;
+            break;
+          case "ArrowRight":
+            currentImageIndex = (currentImageIndex + 1) % galleryThumbnails.length;
+            modalImg.src = galleryThumbnails[currentImageIndex].src;
+            break;
+        }
+      }
+    });
+
   })(jQuery)
 );
 
@@ -293,5 +223,5 @@ jQuery(window).on("load", function () {
   /*--------------------------
         PRE LOADER
     ----------------------------*/
-  $(".preeloader").fadeOut(1000);
+  $(".preloader").fadeOut(1000);
 });

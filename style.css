@@ -661,7 +661,6 @@ a.search-form-trigger::before {
 ------------------------------*/
 
 .about-area {
-    background: rgba(0, 0, 0, 0) url("img/about/home_three_about_bg.png") no-repeat scroll center bottom / contain;
     position: relative;
 }
 
@@ -758,7 +757,8 @@ a.read-more {
 .reservation-button-area-bg,
 .blog-area-bg,
 .footer-area-bg {
-    background: rgba(0, 0, 0, 0) url("img/promotions/promotions_area_bg_1.jpg") no-repeat scroll center center / cover;
+    background: rgba(0, 0, 0, 0) url("img/promotions/promotions_area_bg_1.webp") no-repeat center center / cover;
+    background-attachment: fixed;
     height: 100%;
     left: 0;
     position: absolute;
@@ -1039,6 +1039,43 @@ option {
     border-radius: 0;
 }
 
+/*-------------------------------
+    6. PARALLAX SECTION
+---------------------------------*/
+
+.parallax-section.section-padding {
+    padding: 300px 0;
+}
+
+.parallax-section {
+    position: relative;
+    min-height: 300px;
+}
+
+.parallax-bg {
+    background-image: url("img/p_section_3.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.parallax-bg::after {
+    background: #000 url(img/pattarn.png);
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0.8;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
 /*-----------------------------
     7. TEAM AREA
 -------------------------------*/
@@ -1257,6 +1294,117 @@ a.post-meta-button {
     position: relative;
 }
 
+.gallery-grid {
+    margin-top: 40px;
+}
+
+.gallery-item {
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+.gallery-thumbnail {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-thumbnail:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.gallery-modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    max-height: 80%;
+    object-fit: contain;
+    animation: zoom 0.6s;
+}
+
+@keyframes zoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+.gallery-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.gallery-close:hover,
+.gallery-close:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.gallery-prev,
+.gallery-next {
+    cursor: pointer;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+}
+
+.gallery-next {
+    border-radius: 3px 0 0 3px;
+}
+
+.gallery-prev:hover,
+.gallery-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media only screen and (max-width: 700px) {
+    .gallery-modal-content {
+        width: 100%;
+    }
+    
+    .gallery-thumbnail {
+        height: 150px;
+    }
+}
+
 .instagram.show a {
     display: inline-block;
     width: 20%;
@@ -1289,7 +1437,7 @@ a.post-meta-button {
 }
 
 .footer-area-bg {
-    background: #333333 url("img/footer_bg_2.jpg") no-repeat scroll center center / cover;
+    background: #333333 url("img/footer_bg_22.webp") no-repeat scroll center center / cover;
     position: absolute;
     top: 0;
     left: 0;
@@ -1355,7 +1503,7 @@ a.post-meta-button {
 .footer-copyright {
     letter-spacing: 1px;
     padding: 40px 0;
-    text-align: right;
+    text-align: center;
 }
 
 .footer-copyright p {
@@ -1377,9 +1525,9 @@ a.scrolltotop {
     padding-top: 5px;
     position: fixed;
     right: 20px;
+    z-index: 100001;
     text-align: center;
     width: 40px;
-    z-index: 99;
 }
 
 a.scrolltotop:hover {
@@ -2217,4 +2365,107 @@ ul.blog-instagram-feed-widget li {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* Menu PDF Links Styles */
+.menu-pdf-links {
+    margin-top: 40px;
+}
+
+.menu-intro {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+.menu-links-grid {
+    margin-top: 30px;
+}
+
+.menu-link-item {
+    margin-bottom: 30px;
+}
+
+.menu-pdf-link {
+    display: block;
+    background: #fff;
+    border: 2px solid #f8f9fa;
+    border-radius: 10px;
+    padding: 30px 20px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-pdf-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+
+.menu-pdf-link:hover::before {
+    left: 100%;
+}
+
+.menu-pdf-link:hover {
+    transform: translateY(-5px);
+    border-color: #e67e22;
+    color: #333;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(230,126,34,0.2);
+}
+
+.menu-pdf-link i {
+    font-size: 40px;
+    color: #e67e22;
+    margin-bottom: 15px;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.menu-pdf-link:hover i {
+    transform: scale(1.1);
+    color: #d35400;
+}
+
+.menu-pdf-link h4 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.menu-pdf-link p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .menu-pdf-link {
+        padding: 25px 15px;
+    }
+    
+    .menu-pdf-link i {
+        font-size: 35px;
+    }
+    
+    .menu-pdf-link h4 {
+        font-size: 20px;
+    }
+    
+    .menu-intro {
+        font-size: 16px;
+    }
 }

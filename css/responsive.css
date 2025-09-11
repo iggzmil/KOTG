@@ -2,7 +2,7 @@
     PRELOADER
 -------------------------------*/
 
-.preeloader {
+.preloader {
     background: rgba(255, 255, 255, 1) none repeat scroll 0 0;
     height: 100%;
     position: fixed;
@@ -141,6 +141,40 @@
     .section-padding {
         padding: 50px 0;
     }
+    
+    .mainmenu-area {
+        background: transparent !important;
+    }
+    
+    .navbar-collapse.show {
+        background: rgba(0, 0, 0, 0.8) !important;
+    }
+    
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+    
+    .navbar-toggler {
+        border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    ul#nav li a {
+        color: #fff !important;
+    }
+    
+    .is-sticky ul#nav li a {
+        color: #fff !important;
+    }
+    
+    ul#nav li.active>a,
+    ul#nav li:hover>a {
+        color: #ca3d26 !important;
+    }
+    
+    .is-sticky ul#nav li.active a,
+    .is-sticky ul#nav li:hover a {
+        color: #ca3d26 !important;
+    }
     .pogoSlider-slide {
         background-position: 100% 100% !important;
     }
@@ -177,9 +211,8 @@
     }
     ul#nav {
         width: 100%;
-        max-height: 200px;
-        overflow: scroll;
-        overflow-x: hidden;
+        max-height: none;
+        overflow: visible;
     }
     ul#nav li {
         float: none;
@@ -224,9 +257,6 @@
         display: none;
     }
     /*------------------*/
-    .mainmenu-area {
-        background: #212324 none repeat scroll 0 0;
-    }
     .navbar-brand {
         margin-top: -15px;
         padding: 8px;
@@ -318,6 +348,40 @@
     .section-padding {
         padding: 50px 0;
     }
+    
+    .mainmenu-area {
+        background: transparent !important;
+    }
+    
+    .navbar-collapse.show {
+        background: rgba(0, 0, 0, 0.8) !important;
+    }
+    
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+    
+    .navbar-toggler {
+        border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    
+    ul#nav li a {
+        color: #fff !important;
+    }
+    
+    .is-sticky ul#nav li a {
+        color: #fff !important;
+    }
+    
+    ul#nav li.active>a,
+    ul#nav li:hover>a {
+        color: #ca3d26 !important;
+    }
+    
+    .is-sticky ul#nav li.active a,
+    .is-sticky ul#nav li:hover a {
+        color: #ca3d26 !important;
+    }
     .area-title h2 {
         font-size: 36px;
     }
@@ -352,15 +416,11 @@
     }
     ul#nav {
         width: 100%;
-        max-height: 200px;
-        overflow: scroll;
-        overflow-x: hidden;
+        max-height: none;
+        overflow: visible;
     }
     ul#nav li {
         float: none;
-    }
-    .mainmenu-area {
-        background: #212324 none repeat scroll 0 0;
     }
     ul#nav li a {
         padding: 10px;
@@ -609,9 +669,8 @@
     }
     ul#nav {
         width: 100%;
-        max-height: 200px;
-        overflow: scroll;
-        overflow-x: hidden;
+        max-height: none;
+        overflow: visible;
     }
     /*------------------*/
     .area-title h2 {
