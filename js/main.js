@@ -5,20 +5,24 @@ jQuery(document).ready(
     /*--------------------------
         SCROLLSPY ACTIVE
     ---------------------------*/
-    var scrollSpyEl = document.querySelector('body');
-    if (scrollSpyEl) {
-      new bootstrap.ScrollSpy(scrollSpyEl, {
-        target: '#navbarNav',
-        offset: 50
-      });
-    }
+    // Disabled ScrollSpy to fix mobile scroll issue
+    // var scrollSpyEl = document.querySelector('body');
+    // if (scrollSpyEl) {
+    //   new bootstrap.ScrollSpy(scrollSpyEl, {
+    //     target: '#navbarNav',
+    //     offset: 50
+    //   });
+    // }
 
     /*--------------------------
         STICKY MAINMENU
     ---------------------------*/
-    $("#mainmenu-area").sticky({
-      topSpacing: 0,
-    });
+    // Only enable sticky on desktop to avoid mobile scroll issues
+    if ($(window).width() > 768) {
+      $("#mainmenu-area").sticky({
+        topSpacing: 0,
+      });
+    }
 
     /*-----------------------------
         SLIDER ACTIVE
@@ -101,21 +105,24 @@ jQuery(document).ready(
     /*----------------------------
         SCROLL TO TOP
     ------------------------------*/
-    $(window).on("scroll", function () {
-      var $totalHeight = $(window).scrollTop();
-      var $scrollToTop = $(".scrolltotop");
-      
-      if ($totalHeight > 300) {
-        $scrollToTop.fadeIn();
-      } else {
-        $scrollToTop.fadeOut();
-      }
-      
-      // Keep button at consistent position
-      $scrollToTop.css("bottom", "20px");
-      $scrollToTop.css("right", "20px");
-      $scrollToTop.css("z-index", "100001");
-    });
+    // Only enable scroll to top on desktop to avoid mobile scroll issues
+    if ($(window).width() > 768) {
+      $(window).on("scroll", function () {
+        var $totalHeight = $(window).scrollTop();
+        var $scrollToTop = $(".scrolltotop");
+        
+        if ($totalHeight > 300) {
+          $scrollToTop.fadeIn();
+        } else {
+          $scrollToTop.fadeOut();
+        }
+        
+        // Keep button at consistent position
+        $scrollToTop.css("bottom", "20px");
+        $scrollToTop.css("right", "20px");
+        $scrollToTop.css("z-index", "100001");
+      });
+    }
 
 
     /*---------------------------
