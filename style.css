@@ -684,7 +684,8 @@ a.search-form-trigger::before {
 
 .about-area::before,
 .menus-area::before,
-.team-area::before {
+.team-area::before,
+.gallery-area::before {
     bottom: -7px;
     top: auto;
     -webkit-transform: rotateX(360deg);
@@ -1290,6 +1291,20 @@ a.post-meta-button {
 
 .gallery-area {
     position: relative;
+}
+
+.gallery-area::before {
+    background: rgba(0, 0, 0, 0) url("img/icons/tri-promo-bottom-white.png") repeat scroll 0 0;
+    bottom: -7px;
+    content: "";
+    height: 7px;
+    left: 0;
+    position: absolute;
+    top: auto;
+    -webkit-transform: rotateX(360deg);
+    transform: rotateX(360deg);
+    width: 100%;
+    z-index: 9;
 }
 
 .gallery-grid {
@@ -2099,6 +2114,7 @@ ul.blog-instagram-feed-widget li {
 .style-classic .team-area::after,
 .style-classic .team-area::before,
 .style-classic .gallery-area::after,
+.style-classic .gallery-area::before,
 .style-classic .footer-area::after,
 .style-classic .mainmenu-area::after {
     display: none;
