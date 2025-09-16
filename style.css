@@ -2470,16 +2470,142 @@ ul.blog-instagram-feed-widget li {
     .menu-pdf-link {
         padding: 25px 15px;
     }
-    
+
     .menu-pdf-link i {
         font-size: 35px;
     }
-    
+
     .menu-pdf-link h4 {
         font-size: 20px;
     }
-    
+
     .menu-intro {
+        font-size: 16px;
+    }
+}
+
+/*------------------------------
+    CONTACT FORM AREA
+-------------------------------*/
+
+.contact-form-area {
+    position: relative;
+}
+
+.contact-form-area::after,
+.contact-form-area::before {
+    background: rgba(0, 0, 0, 0) url("img/icons/tri-promo-bottom-white.png") repeat scroll 0 0;
+    content: "";
+    height: 7px;
+    left: 0;
+    position: absolute;
+    top: -7px;
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+    width: 100%;
+    z-index: 9;
+}
+
+.contact-form-area::before {
+    bottom: -7px;
+    top: auto;
+    -webkit-transform: rotateX(360deg);
+    transform: rotateX(360deg);
+}
+
+.contact-form-wrapper {
+    background: #fff;
+    padding: 50px 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.contact-intro {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+.contact-form .form-group {
+    margin-bottom: 25px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    background: #fff;
+    transition: all 0.3s ease;
+    font-family: "Lato", sans-serif;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #ca3d26;
+    box-shadow: 0 0 10px rgba(202, 61, 38, 0.1);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-submit-btn {
+    background: #ca3d26;
+    color: #fff;
+    border: 2px solid #ca3d26;
+    padding: 15px 40px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "PT Sans Narrow", sans-serif;
+}
+
+.contact-submit-btn:hover {
+    background: #fff;
+    color: #ca3d26;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(202, 61, 38, 0.2);
+}
+
+.contact-submit-btn i {
+    margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+    .contact-form-wrapper {
+        padding: 30px 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    .contact-submit-btn {
+        padding: 12px 30px;
+        font-size: 14px;
+    }
+
+    .contact-intro {
         font-size: 16px;
     }
 }
