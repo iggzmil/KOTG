@@ -2485,6 +2485,37 @@ ul.blog-instagram-feed-widget li {
 }
 
 /*------------------------------
+    BBQ SERVICES AREA
+-------------------------------*/
+
+/* BBQ Services section uses the same classes as Mobile Catering (promotions-area)
+   These additional classes are provided for future customization if needed */
+
+.bbq-services-area {
+    /* Inherits all styles from .promotions-area */
+}
+
+.bbq-services-bg {
+    /* Inherits all styles from .promotion-area-bg */
+}
+
+.bbq-services-offer {
+    /* Inherits all styles from .menu-discount-offer */
+}
+
+.single-bbq-services {
+    /* Inherits all styles from .single-promotions */
+}
+
+.bbq-services-img {
+    /* Inherits all styles from .promotions-img */
+}
+
+.bbq-services-details {
+    /* Inherits all styles from .promotions-details */
+}
+
+/*------------------------------
     CONTACT FORM AREA
 -------------------------------*/
 
