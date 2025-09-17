@@ -787,6 +787,9 @@ a.read-more {
     .blog-area-bg,
     .footer-area-bg {
         background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
     }
 
     .reservation-button-area.section-padding {
@@ -1081,8 +1084,10 @@ option {
 /* iOS Safari fix - disable fixed attachment on mobile devices */
 @media (max-width: 768px) {
     .parallax-bg {
-        background-attachment: scroll;
-        background-size: cover;
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
     }
 
     .parallax-section.section-padding {
@@ -2546,6 +2551,9 @@ ul.blog-instagram-feed-widget li {
 @media (max-width: 768px) {
     .bbq-services-bg {
         background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
     }
 }
 
