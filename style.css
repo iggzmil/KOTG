@@ -46,7 +46,8 @@ Version: 2.0
 
 /* Hide smoke on white sections */
 body.smoke-hidden .tcg-smoke-cursor {
-    opacity: 0;
+    opacity: 0 !important;
+    transition: opacity 0.1s ease !important;
 }
 
 /* Disable smoke effect on mobile for performance */

@@ -94,50 +94,67 @@ jQuery(document).ready(
     /*--------------------------
        SMOKE EFFECT CONTROL
     ----------------------------*/
-    // Hide smoke effect on white background sections
+    // Control smoke effect visibility based on section backgrounds
     function checkSmokeVisibility() {
       var scrollTop = $(window).scrollTop();
       var windowHeight = $(window).height();
-      var whiteSections = $('.about-area, .menus-area, .gallery-area, .contact-form-area');
-      var footerArea = $('.footer-area');
-      var shouldHide = false;
+      var viewportCenter = scrollTop + (windowHeight / 2);
 
-      // Check if we're in the footer area first (priority override)
-      if (footerArea.length > 0) {
-        var footerTop = footerArea.offset().top;
-        var footerBottom = footerTop + footerArea.outerHeight();
+      // Sections where smoke should be HIDDEN (light backgrounds)
+      var lightSections = $('.about-area, .menus-area, .gallery-area, .contact-form-area');
 
-        // If we can see any part of the footer, show smoke
-        if (scrollTop + windowHeight >= footerTop) {
-          $('body').removeClass('smoke-hidden');
-          return; // Exit early, footer takes priority
-        }
-      }
+      // Sections where smoke should be VISIBLE (dark backgrounds)
+      var darkSections = $('.slider-area, .promotions-area, .parallax-section, .footer-area');
 
-      // Check if any white section is dominating the viewport
-      whiteSections.each(function() {
+      var inLightSection = false;
+      var inDarkSection = false;
+
+      // Check if viewport center is in a light section
+      lightSections.each(function() {
         var sectionTop = $(this).offset().top;
         var sectionBottom = sectionTop + $(this).outerHeight();
 
-        // Check if this white section is prominently visible
-        if (scrollTop >= sectionTop - 100 && scrollTop <= sectionBottom - windowHeight / 2) {
-          shouldHide = true;
-          return false; // break the loop
+        if (viewportCenter >= sectionTop && viewportCenter <= sectionBottom) {
+          inLightSection = true;
+          return false;
         }
       });
 
-      if (shouldHide) {
+      // If in light section, hide smoke immediately
+      if (inLightSection) {
         $('body').addClass('smoke-hidden');
-      } else {
+        return;
+      }
+
+      // Check if viewport center is in a dark section
+      darkSections.each(function() {
+        var sectionTop = $(this).offset().top;
+        var sectionBottom = sectionTop + $(this).outerHeight();
+
+        if (viewportCenter >= sectionTop && viewportCenter <= sectionBottom) {
+          inDarkSection = true;
+          return false;
+        }
+      });
+
+      // Show smoke only if in dark section
+      if (inDarkSection) {
         $('body').removeClass('smoke-hidden');
+      } else {
+        $('body').addClass('smoke-hidden');
       }
     }
 
     // Check on scroll and initial load
     $(window).on('scroll', checkSmokeVisibility);
-    $(document).ready(function() {
+
+    // Initial check when document is ready
+    checkSmokeVisibility();
+
+    // Double-check after a short delay to ensure DOM is fully loaded
+    setTimeout(function() {
       checkSmokeVisibility();
-    });
+    }, 100);
 
 
     /*---------------------------
