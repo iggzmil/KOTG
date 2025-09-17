@@ -787,7 +787,10 @@ a.read-more {
     .blog-area-bg,
     .footer-area-bg {
         background-attachment: scroll !important;
-        min-height: 100vh;
+    }
+
+    .reservation-button-area.section-padding {
+        padding: 80px 0;
     }
 }
 
@@ -1080,7 +1083,10 @@ option {
     .parallax-bg {
         background-attachment: scroll;
         background-size: cover;
-        min-height: 100vh;
+    }
+
+    .parallax-section.section-padding {
+        padding: 80px 0;
     }
 }
 
@@ -2540,7 +2546,6 @@ ul.blog-instagram-feed-widget li {
 @media (max-width: 768px) {
     .bbq-services-bg {
         background-attachment: scroll !important;
-        min-height: 100vh;
     }
 }
 
