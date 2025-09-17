@@ -780,6 +780,17 @@ a.read-more {
     width: 100%;
 }
 
+/* iOS Safari fix for promotion, reservation, blog, and footer area backgrounds */
+@media (max-width: 768px) {
+    .promotion-area-bg,
+    .reservation-button-area-bg,
+    .blog-area-bg,
+    .footer-area-bg {
+        background-attachment: scroll !important;
+        min-height: 100vh;
+    }
+}
+
 .promotions-img {
     height: auto;
     max-height: 450px;
@@ -1062,6 +1073,15 @@ option {
     position: absolute;
     top: 0;
     width: 100%;
+}
+
+/* iOS Safari fix - disable fixed attachment on mobile devices */
+@media (max-width: 768px) {
+    .parallax-bg {
+        background-attachment: scroll;
+        background-size: cover;
+        min-height: 100vh;
+    }
 }
 
 .parallax-bg::after {
@@ -2514,6 +2534,14 @@ ul.blog-instagram-feed-widget li {
     position: absolute;
     top: 0;
     width: 100%;
+}
+
+/* iOS Safari fix for BBQ services background */
+@media (max-width: 768px) {
+    .bbq-services-bg {
+        background-attachment: scroll !important;
+        min-height: 100vh;
+    }
 }
 
 .row.bbq-services-offer {
