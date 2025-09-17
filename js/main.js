@@ -91,6 +91,54 @@ jQuery(document).ready(
       horizontalScrolling: false,
     });
 
+    /*--------------------------
+       SMOKE EFFECT CONTROL
+    ----------------------------*/
+    // Hide smoke effect on white background sections
+    function checkSmokeVisibility() {
+      var scrollTop = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      var whiteSections = $('.about-area, .menus-area, .gallery-area, .contact-form-area');
+      var footerArea = $('.footer-area');
+      var shouldHide = false;
+
+      // Check if we're in the footer area first (priority override)
+      if (footerArea.length > 0) {
+        var footerTop = footerArea.offset().top;
+        var footerBottom = footerTop + footerArea.outerHeight();
+
+        // If we can see any part of the footer, show smoke
+        if (scrollTop + windowHeight >= footerTop) {
+          $('body').removeClass('smoke-hidden');
+          return; // Exit early, footer takes priority
+        }
+      }
+
+      // Check if any white section is dominating the viewport
+      whiteSections.each(function() {
+        var sectionTop = $(this).offset().top;
+        var sectionBottom = sectionTop + $(this).outerHeight();
+
+        // Check if this white section is prominently visible
+        if (scrollTop >= sectionTop - 100 && scrollTop <= sectionBottom - windowHeight / 2) {
+          shouldHide = true;
+          return false; // break the loop
+        }
+      });
+
+      if (shouldHide) {
+        $('body').addClass('smoke-hidden');
+      } else {
+        $('body').removeClass('smoke-hidden');
+      }
+    }
+
+    // Check on scroll and initial load
+    $(window).on('scroll', checkSmokeVisibility);
+    $(document).ready(function() {
+      checkSmokeVisibility();
+    });
+
 
     /*---------------------------
         SMOOTH SCROLL

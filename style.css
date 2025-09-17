@@ -29,6 +29,33 @@ Version: 2.0
 ----------------------*/
 
 @import url("https://fonts.googleapis.com/css?family=Dancing+Script:400,700|Lato:400,700|PT+Sans+Narrow:400,700");
+
+/* Smoke Cursor Effect */
+.tcg-smoke-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.25;
+    z-index: 100001;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    transition: opacity 0.3s ease;
+}
+
+/* Hide smoke on white sections */
+body.smoke-hidden .tcg-smoke-cursor {
+    opacity: 0;
+}
+
+/* Disable smoke effect on mobile for performance */
+@media (max-width: 768px) {
+    .tcg-smoke-cursor {
+        display: none;
+    }
+}
+
 .alignleft {
     float: left;
     margin-right: 15px;
@@ -487,7 +514,7 @@ a.home-reservation-button:hover {
     content: "";
     height: 100%;
     left: 0;
-    opacity: 0.6;
+    opacity: 0.75;
     position: absolute;
     top: 0;
     width: 100%;
@@ -1084,6 +1111,7 @@ option {
 /* iOS Safari fix - disable fixed attachment on mobile devices */
 @media (max-width: 768px) {
     .parallax-bg {
+        background-image: url("img/p_section_3.webp") !important;
         background-attachment: scroll !important;
         background-size: cover !important;
         background-position: center center !important;
@@ -2170,7 +2198,7 @@ ul.blog-instagram-feed-widget li {
     content: "";
     height: 100%;
     left: 0;
-    opacity: 0.5;
+    opacity: 0.75;
     position: absolute;
     top: 0;
     width: 100%;
